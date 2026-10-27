@@ -1,0 +1,14 @@
+.board {
+  display: grid;
+  gap: 16px;
+}
+
+.toolbar {
+  display: flex;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 480px), 1fr));
+  gap: 16px;
+}

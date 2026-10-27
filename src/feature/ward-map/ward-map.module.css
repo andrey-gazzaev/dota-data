@@ -1,0 +1,9 @@
+.title {
+  margin: 8px 0 4px;
+  font-size: 28px;
+  font-weight: 680;
+}
+
+.links a {
+  color: var(--gold);
+}

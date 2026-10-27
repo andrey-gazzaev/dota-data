@@ -1,0 +1,98 @@
+.tabs {
+  margin-bottom: 12px;
+}
+
+.hero {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 12px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.open .toggle {
+  border-bottom-color: transparent;
+}
+
+.toggle {
+  display: grid;
+  grid-template-columns: 8.5em minmax(0, 1.2fr) 6.2em 5.2em 4.2em minmax(0, 1.6fr);
+  gap: 8px;
+  align-items: center;
+  width: 100%;
+  padding: 8px 6px;
+  background: transparent;
+  color: inherit;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  cursor: pointer;
+}
+
+.body {
+  display: grid;
+  gap: 8px;
+  padding: 0 6px 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+.body p {
+  margin: 0;
+}
+
+.items,
+.order {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.items {
+  flex-wrap: nowrap;
+}
+
+.order {
+  flex-wrap: wrap;
+}
+
+.items img,
+.order img {
+  width: 28px;
+  height: 20px;
+  object-fit: cover;
+  border-radius: 3px;
+  background: var(--surface-2);
+}
+
+.neutral {
+  margin-left: 4px;
+  outline: 1px solid var(--gold);
+}
+
+.lineup {
+  display: grid;
+  gap: 6px;
+  align-content: start;
+}
+
+.lineupRow {
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: center;
+}
+
+.lineupRow img {
+  border-radius: 3px;
+}
+
+@media (max-width: 860px) {
+  .toggle {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .items {
+    grid-column: 1 / -1;
+    flex-wrap: wrap;
+  }
+}

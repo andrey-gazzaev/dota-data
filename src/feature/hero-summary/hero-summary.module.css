@@ -1,0 +1,10 @@
+.stats {
+  display: flex;
+  gap: 18px;
+  margin-top: 8px;
+}
+
+.stats b {
+  display: block;
+  font-size: 22px;
+}

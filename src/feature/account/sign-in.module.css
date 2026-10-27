@@ -1,0 +1,15 @@
+.title {
+  margin: 0;
+  font-size: 22px;
+}
+
+.form {
+  display: grid;
+  gap: 12px;
+  margin-top: 16px;
+  max-width: 420px;
+}
+
+.form button {
+  justify-self: start;
+}

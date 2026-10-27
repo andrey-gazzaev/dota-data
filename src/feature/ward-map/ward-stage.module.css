@@ -1,0 +1,73 @@
+.clock {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 20px;
+}
+
+.stage {
+  position: relative;
+  width: min(720px, 100%);
+  margin: 12px auto 0;
+  background: var(--surface-2);
+  border-radius: 12px;
+}
+
+.stage img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+.pin {
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 45%);
+}
+
+.observer {
+  width: 16px;
+  height: 16px;
+  background: #f2d15a;
+}
+
+.sentry {
+  width: 12px;
+  height: 12px;
+  background: #6aa7ff;
+}
+
+.radiant {
+  border: 2px solid var(--win);
+}
+
+.dire {
+  border: 2px solid var(--loss);
+}
+
+.stage .pin {
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 18px;
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.legend li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.legend .pin {
+  position: static;
+  display: inline-block;
+  flex: none;
+}

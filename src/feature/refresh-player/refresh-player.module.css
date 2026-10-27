@@ -1,0 +1,13 @@
+.root {
+  position: relative;
+  max-width: 280px;
+  display: grid;
+  gap: 8px;
+}
+
+@media (max-width: 860px) {
+  .root {
+    width: 100%;
+    max-width: none;
+  }
+}
