@@ -1,0 +1,8 @@
+node_modules
+dist
+data
+coverage
+package-lock.json
+player_*.json
+player_*.summary.json
+player_*.details.jsonl
