@@ -1,0 +1,26 @@
+.cell,
+.lead {
+  display: flex;
+  align-items: center;
+}
+
+.cell {
+  gap: 10px;
+}
+
+.lead {
+  gap: 16px;
+  min-width: 0;
+}
+
+.cell img,
+.lead img {
+  border-radius: 10px;
+  background: var(--surface-2);
+}
+
+.lead h1 {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 680;
+}

@@ -1,0 +1,12 @@
+.page {
+  width: var(--page);
+  margin: 0 auto 48px;
+  display: grid;
+  gap: 16px;
+}
+
+@media (max-width: 860px) {
+  .page {
+    width: var(--page-narrow);
+  }
+}

@@ -1,0 +1,21 @@
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pill {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.pill[aria-pressed='true'],
+.pill[aria-selected='true'] {
+  color: var(--ink);
+  background: var(--gold);
+  border-color: var(--gold);
+}

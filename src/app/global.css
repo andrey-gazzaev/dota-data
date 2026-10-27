@@ -1,0 +1,81 @@
+:root {
+  color-scheme: dark;
+  --bg: #10140f;
+  --surface: #1b2219;
+  --surface-2: #242c21;
+  --line: #343d30;
+  --text: #e8eee2;
+  --muted: #9aa592;
+  --gold: #e0b15a;
+  --win: #8fce6a;
+  --loss: #e07a5f;
+  --ink: #1b160c;
+  --radius: 16px;
+  --radius-control: 10px;
+  --shadow: 0 16px 40px rgb(0 0 0 / 35%);
+  --page: min(1120px, calc(100% - 40px));
+  --page-narrow: min(1120px, calc(100% - 24px));
+  --font: 'Familjen Grotesk', 'Avenir Next', sans-serif;
+  --mono: 'IBM Plex Mono', ui-monospace, monospace;
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.4;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(900px 420px at 8% -12%, rgb(224 177 90 / 14%), transparent 55%), var(--bg);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input {
+  font: inherit;
+  color: inherit;
+}
+
+img {
+  display: block;
+}
+
+.sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.muted {
+  color: var(--muted);
+  margin: 4px 0 0;
+}
+
+.status,
+.search-note {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 6px 0 0;
+  white-space: pre-line;
+}
+
+.win {
+  color: var(--win);
+}
+
+.loss {
+  color: var(--loss);
+}

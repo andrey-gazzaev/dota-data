@@ -1,0 +1,18 @@
+.control {
+  width: 100%;
+  background: var(--surface-2);
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-control);
+  padding: 10px 12px;
+  font: inherit;
+}
+
+.surface {
+  background: var(--surface);
+}
+
+.compact {
+  width: min(320px, 100%);
+  padding: 8px 12px;
+}
