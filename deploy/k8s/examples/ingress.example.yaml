@@ -1,0 +1,19 @@
+# Включают вместо туннеля, когда появится провайдер и Ingress-контроллер.
+# Укажите ingressClassName своего кластера.
+# Длинные обновления игрока идут как SSE: у прокси выключите буферизацию и увеличьте таймаут.
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: dota-data
+spec:
+  rules:
+    - host: dota.example.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dota-data
+                port:
+                  number: 8787

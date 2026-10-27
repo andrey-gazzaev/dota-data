@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dota-data-tunnel
+  labels:
+    app: dota-data-tunnel
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dota-data-tunnel
+  template:
+    metadata:
+      labels:
+        app: dota-data-tunnel
+    spec:
+      containers:
+        - name: cloudflared
+          image: cloudflare/cloudflared:latest
+          args: ['tunnel', '--no-autoupdate', 'run']
+          env:
+            - name: TUNNEL_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: dota-data-tunnel
+                  key: TUNNEL_TOKEN

@@ -1,0 +1,69 @@
+# Данные игроков. Кэш справочников остаётся на диске приложения.
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: dota-data-mongo
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dota-data-mongo
+  labels:
+    app: dota-data-mongo
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: dota-data-mongo
+  template:
+    metadata:
+      labels:
+        app: dota-data-mongo
+    spec:
+      securityContext:
+        fsGroup: 999
+      containers:
+        - name: mongo
+          image: mongo:7
+          ports:
+            - name: mongo
+              containerPort: 27017
+          volumeMounts:
+            - name: data
+              mountPath: /data/db
+          readinessProbe:
+            exec:
+              command: ['mongosh', '--quiet', '--eval', 'db.runCommand({ ping: 1 }).ok']
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            exec:
+              command: ['mongosh', '--quiet', '--eval', 'db.runCommand({ ping: 1 }).ok']
+            initialDelaySeconds: 20
+            periodSeconds: 20
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: dota-data-mongo
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dota-data-mongo
+  labels:
+    app: dota-data-mongo
+spec:
+  selector:
+    app: dota-data-mongo
+  ports:
+    - name: mongo
+      port: 27017
+      targetPort: mongo

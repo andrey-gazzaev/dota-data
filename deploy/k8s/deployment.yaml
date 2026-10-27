@@ -1,0 +1,64 @@
+# Одна реплика: обновление игрока и его отмена живут в памяти процесса.
+# Снимки игроков лежат в MongoDB, кэш справочников — на диске.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dota-data
+  labels:
+    app: dota-data
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: dota-data
+  template:
+    metadata:
+      labels:
+        app: dota-data
+    spec:
+      securityContext:
+        fsGroup: 1000
+      containers:
+        - name: app
+          image: dota-data:local
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 8787
+          env:
+            - name: NODE_ENV
+              value: production
+            - name: HOST
+              value: 0.0.0.0
+            - name: PORT
+              value: '8787'
+            - name: DATA_DIR
+              value: /data
+            - name: CLIENT_DIR
+              value: /app/dist/client
+            - name: MONGODB_URI
+              value: mongodb://dota-data-mongo:27017/dota
+          envFrom:
+            - secretRef:
+                name: dota-data
+          volumeMounts:
+            - name: data
+              mountPath: /data
+          readinessProbe:
+            httpGet:
+              path: /api/health
+              port: http
+            initialDelaySeconds: 3
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /api/health
+              port: http
+            initialDelaySeconds: 10
+            periodSeconds: 20
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: dota-data

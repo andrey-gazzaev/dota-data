@@ -1,0 +1,12 @@
+# storageClassName не задан: диск берёт класс по умолчанию в кластере.
+# У провайдера укажите его класс здесь.
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: dota-data
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
